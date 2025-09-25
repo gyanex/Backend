@@ -31,7 +31,7 @@ const userSchema = new Schema(
       required: true,
     },
     coverImage: {
-      type,
+      type: String,
     },
     watchHistory: [{ type: Schema.Types.ObjectId, ref: "Video" }],
     password: {
