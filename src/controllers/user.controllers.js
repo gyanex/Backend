@@ -11,7 +11,6 @@ const cookieOptions = {
 };
 
 const generateAccessandRefreshToken = async (userId) => {
-  console.log("Generating tokens for userId:", userId); // Debugging line
   try {
     const user = await User.findById(userId);
     const accessToken = await user.generateAccessToken();
@@ -101,7 +100,6 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new ApiError(401, "Invalid credentials");
   }
   // generate access token
-  console.log(user);
   const { accessToken, refreshToken } = await generateAccessandRefreshToken(
     user._id
   );
@@ -143,7 +141,6 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     incomingRefreshToken,
     process.env.REFRESH_TOKEN_SECRET
   );
-  console.log(decodedToken);
 
   const user = await User.findById(decodedToken._Id);
 
